@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<%- include ('../../partials/head') %>
+</head>
+<body>
+<%- include ('../../partials/nav') %>
+<section class="my-5">
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Products</h2>
+                <a class="btn btn-info" href="/product/create">Create New Product</a>
+                <% if (message) { %>
+                <div class="alert alert-danger"><pre style="color: red;"><%= message %></pre></div>
+                <% } %>
+            </div>
+            <div class="card-body">
+                <% if (products.length > 0) { %>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Code</th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Brand</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for (let i = 0; i < products.length; i++) { %>
+                        <tr>
+                            <td align="center"><%= products[i].id %></td>
+                            <td><a href="/product/<%= products[i].code %>/edit"><%= products[i].code %></a></td>
+                            <td><%= products[i].name %></td>
+                            <td><%= products[i].category %></td>
+                            <td><%= products[i].brand %></td>
+                            <td><%= products[i].type %></td>
+                            <td><%= products[i].description %></td>
+                        </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</section>
+<%- include ('../../partials/footer') %>
+<script>
+$(document).ready(function () {
+    $('#mnuProduct').addClass('active');
+});
+</script>
+</body>
+</html>
