@@ -2,11 +2,11 @@
   "name": "back-end",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "dist/server.js",
   "scripts": {
-    "test": "cross-env NODE_ENV=development jest --no-cache --testTimeout=30000",
+    "test": "jest --no-cache --testTimeout=30000",
     "dev": "tsnd --respawn index.ts",
-    "start": "npm run build && node build/index.js",
+    "start": "ts-node index.ts",
     "start:dev": "nodemon",
     "build": "rimraf ./build && tsc"
   },
@@ -37,6 +37,5 @@
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.23.2",
     "sequelize-cli": "^6.5.1"
-  },
-  "proxy": "http://localhost:4001"
+  }
 }

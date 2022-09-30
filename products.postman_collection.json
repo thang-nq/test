@@ -1,0 +1,213 @@
+{
+	"info": {
+		"_postman_id": "29cf41e1-b972-41c2-bc79-dc0c21f644a4",
+		"name": "products",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15514953"
+	},
+	"item": [
+		{
+			"name": "listing",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{api_sboot}}/products?page=1&size=10",
+					"host": [
+						"{{api_sboot}}"
+					],
+					"path": [
+						"products"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "size",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "single item",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{api_sboot}}/products/:code",
+					"host": [
+						"{{api_sboot}}"
+					],
+					"path": [
+						"products",
+						":code"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					],
+					"variable": [
+						{
+							"key": "code",
+							"value": "p101"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create item",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"code\": \"P101\",\r\n    \"name\": null,\r\n    \"category\": \"Home Decoration\",\r\n    \"brand\": null,\r\n    \"type\": null,\r\n    \"description\": \"The next super product of the year.\"\r\n}"
+				},
+				"url": {
+					"raw": "{{api_sboot}}/products",
+					"host": [
+						"{{api_sboot}}"
+					],
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update item",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"description\": null,\r\n    \"name\": \"IPHONE 14 PRO\",\r\n    \"brand\": \"apple\"\r\n}"
+				},
+				"url": {
+					"raw": "{{api_sboot}}/products/:code",
+					"host": [
+						"{{api_sboot}}"
+					],
+					"path": [
+						"products",
+						":code"
+					],
+					"variable": [
+						{
+							"key": "code",
+							"value": "P101"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete item",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{api_sboot}}/products/:code",
+					"host": [
+						"{{api_sboot}}"
+					],
+					"path": [
+						"products",
+						":code"
+					],
+					"variable": [
+						{
+							"key": "code",
+							"value": "P101"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "api_sboot",
+			"value": "http://localhost:8080/api",
+			"type": "string"
+		}
+	]
+}
