@@ -1,3 +1,4 @@
 /back-end/node_module
 /back-end/build
 /front-end
+.DS_Store
