@@ -1,2 +1,3 @@
-/node_module
-/build
+/back-end/node_module
+/back-end/build
+/front-end

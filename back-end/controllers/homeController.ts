@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from "express";
+import path from "path";
 // import logger from "../core/logger";
 
 const homeController = {
@@ -10,7 +11,7 @@ const homeController = {
       result.name = req.query.name;
     }
     // logger.debug("result => " + JSON.stringify(result));
-    res.render("pages/index", result);
+    res.sendFile(path.join(__dirname, "../client/build/index.html"));
   },
 };
 

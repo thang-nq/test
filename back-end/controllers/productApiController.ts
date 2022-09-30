@@ -2,6 +2,13 @@ import e, { NextFunction, Request, Response } from "express";
 // import logger from "../core/logger";
 import { Product, ProductAdd } from "../models/product";
 
+const getPaginatedData = (data: any, page: number, limit: number) => {
+  const { count: totalItems, rows: products } = data;
+  const currentPage = page ? +page : 0;
+  const totalPages = Math.ceil(totalItems / limit);
+  return { totalItems, products, totalPages, currentPage };
+};
+
 const productApiController = {
   listing: (req: Request, res: Response, next: NextFunction): void => {
     // logger.info("retrieving product listing");
@@ -12,8 +19,8 @@ const productApiController = {
     }
     if (size <= 0) {
       size = 10;
-    } else if (size > 100) {
-      size = 100;
+    } else if (size > 25) {
+      size = 25;
     }
     let page: number = Number(req.query.page);
     if (Number.isNaN(page)) {
@@ -50,7 +57,8 @@ const productApiController = {
     })
       .then((result) => {
         if (result.rows) {
-          res.status(200).json(result.rows);
+          const response = getPaginatedData(result, page, size);
+          res.status(200).json(response);
         } else {
           res.status(200).json([]);
         }

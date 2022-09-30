@@ -4,14 +4,14 @@ import server from "./../server";
 
 describe("API Products endpoints", () => {
   it("Should return a list with records", async () => {
-    const res = await request(server).get("/api/products");
+    const res = await request(server).get("/api/products?page=2&size=5");
     expect(res.statusCode).toEqual(200);
   });
 
   it("Should return a list with no record", async () => {
     const res = await request(server).get("/api/products?page=50");
     expect(res.statusCode).toEqual(200);
-    expect(res.body.length).toEqual(0);
+    expect(res.body.products.length).toEqual(0);
   });
 
   it("should create new product", async () => {
