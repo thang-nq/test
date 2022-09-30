@@ -4,6 +4,8 @@
 
 `cd back-end`
 
+`npm install`
+
 `npm start` - The application is running at localhost:8080
 
 `npm run test` - Unit tests
